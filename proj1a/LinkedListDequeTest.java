@@ -10,7 +10,7 @@ public class LinkedListDequeTest {
 		return true;
 	}
 
-	/* Utility method for printing out empty checks. */
+	/* Utility method for printing out size checks. */
 	public static boolean checkSize(int expected, int actual) {
 		if (expected != actual) {
 			System.out.println("size() returned " + actual + ", but expected: " + expected);
@@ -35,8 +35,8 @@ public class LinkedListDequeTest {
 	  * && is the "and" operation. */
 	public static void addIsEmptySizeTest() {
 		System.out.println("Running add/isEmpty/Size test.");
-		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
+		//System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+
 		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -58,7 +58,7 @@ public class LinkedListDequeTest {
 		lld1.printDeque();
 
 		printTestStatus(passed);
-		*/
+
 	}
 
 	/** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
@@ -66,14 +66,14 @@ public class LinkedListDequeTest {
 
 		System.out.println("Running add/remove test.");
 
-		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
+		//System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
 		lld1.addFirst(10);
-		// should not be empty 
+		// should not be empty
 		passed = checkEmpty(false, lld1.isEmpty()) && passed;
 
 		lld1.removeFirst();
@@ -81,12 +81,39 @@ public class LinkedListDequeTest {
 		passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
 		printTestStatus(passed);
-		*/
+
+	}
+
+	/** Adds my self constructed test. */
+	public static void MyTest() {
+
+		System.out.println("Running my test.");
+
+		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+		// should be empty
+		boolean passed = checkEmpty(true, lld1.isEmpty());
+
+		lld1.addFirst("Star");
+		lld1.addFirst("Mars");
+		lld1.addFirst("Bruno");
+		lld1.addLast("Venus");
+		// should not be empty
+		passed = checkEmpty(false, lld1.isEmpty()) && passed;
+		passed = checkSize(4, lld1.size()) && passed;
+
+		lld1.removeFirst();
+		// should not be empty
+		passed = checkEmpty(false, lld1.isEmpty()) && passed;
+		passed = checkSize(3, lld1.size()) && passed;
+
+		printTestStatus(passed);
+
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
+		MyTest();
 	}
 } 
