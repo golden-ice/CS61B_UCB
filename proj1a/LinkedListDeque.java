@@ -23,12 +23,12 @@ public class LinkedListDeque<T> {
     }
 
     /** Creates a linked list deque with x. */
-    public LinkedListDeque(T item) {
+/*    public LinkedListDeque(T item) {
         sentinel = new DequeNode(null, null, null);
         sentinel.next = new DequeNode(sentinel, item, sentinel);
         sentinel.prev = sentinel.next;
         size = 1;
-    }
+    }*/
 
     /** Adds an item of type T to the front of the deque. */
     public void addFirst(T item) {
@@ -100,8 +100,7 @@ public class LinkedListDeque<T> {
             return null;
         }
         DequeNode toGet = sentinel.next;
-        int i = 0;
-        while (i < index) {
+        for (int i = 0; i < index; i++) {
             toGet = toGet.next;
         }
         return toGet.item;
@@ -126,7 +125,7 @@ public class LinkedListDeque<T> {
     /** Create a deep copy of other */
     /** This is an additional task in sp19, which is not included in sp18. */
     //@Josh Hug
-    public LinkedListDeque(LinkedListDeque other) {
+/*    public LinkedListDeque(LinkedListDeque other) {
         sentinel = new DequeNode(null, null, null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
@@ -135,7 +134,7 @@ public class LinkedListDeque<T> {
         for (int i = 0; i < other.size(); i++) {
             addLast((T) other.get(i)); // need a cast (T), since the type of other is unknown.
         }
-    }
+    }*/
 
 //    public static void main (String[] args) {
 //        LinkedListDeque L = new LinkedListDeque();

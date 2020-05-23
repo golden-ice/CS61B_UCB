@@ -41,8 +41,8 @@ public class ArrayDeque<T> {
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         int dequefirst = plusOne(nextFirst);  // get the index of the 1st item
-        for (int targerIndex = 0; targerIndex < size; targerIndex++) {
-            a[targerIndex] = items[dequefirst];
+        for (int targetIndex = 0; targetIndex < size; targetIndex++) {
+            a[targetIndex] = items[dequefirst];
             dequefirst = plusOne(dequefirst);
         }
         items = a;
@@ -106,9 +106,9 @@ public class ArrayDeque<T> {
     public T removeFirst() {
         nextFirst = plusOne(nextFirst);
         T toRemoveFirst = items[nextFirst];
-        items[nextFirst] = null; //when emptty, should return null
+        items[nextFirst] = null; //when empty, should return null
         if (isSpare()) {
-            resize(size / 2);
+            resize(items.length / 2);
         }
         if (!isEmpty()) {
             size = size - 1;
@@ -120,9 +120,9 @@ public class ArrayDeque<T> {
     public T removeLast() {
         nextLast = minusOne(nextLast);
         T toRemoveLast = items[nextLast];
-        items[nextLast] = null; //when emptty, should return null
+        items[nextLast] = null; //when empty, should return null
         if (isSpare()) {
-            resize(size / 2);
+            resize(items.length / 2);
         }
         if (!isEmpty()) {
             size = size - 1;
@@ -141,8 +141,10 @@ public class ArrayDeque<T> {
         return items[(indexStart + index) % items.length];
     }
 
-    public ArrayDeque(ArrayDeque other) {
-        T[] items = (T[]) new Object[other.items.length];
+    /** Create a deep copy of other */
+    /** This is an additional task in sp19, which is not included in sp18. */
+/*    public ArrayDeque(ArrayDeque other) {
+        items = (T[]) new Object[other.items.length];
         size = other.size();
         nextFirst = other.nextFirst;
         nextLast = other.nextLast;
@@ -150,7 +152,7 @@ public class ArrayDeque<T> {
         for (int i = 0; i < other.size(); i++) {
             addLast((T) other.get(i)); // need a cast (T), since the type of other is unknown.
         }
-    }
+    }*/
 
 //    public static void main (String[] args) {
 //        ArrayDeque L = new ArrayDeque();
