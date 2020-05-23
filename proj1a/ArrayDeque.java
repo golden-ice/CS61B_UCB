@@ -77,7 +77,7 @@ public class ArrayDeque<T> {
             resize(2 * size);
         }
         items[nextLast] = item;
-        nextFirst = plusOne(nextLast);
+        nextLast = plusOne(nextLast);
         size += 1;
     }
 
@@ -89,12 +89,12 @@ public class ArrayDeque<T> {
         return false;
     }
 
-    /** Returns the number of items in the deque. */
+    /** Returns the number of items of the deque. */
     public int size() {
         return size;
     }
 
-    /** Print the items in the deque from first to last. */
+    /** Print the items of the deque from first to last. */
     public void printDeque() {
         for (int i = plusOne(nextFirst); i != nextLast; i = plusOne(i)) {
             System.out.print(items[i] + " ");
@@ -110,7 +110,7 @@ public class ArrayDeque<T> {
         if (isSpare()) {
             resize(size / 2);
         }
-        if (! isEmpty()) {
+        if (!isEmpty()) {
             size = size - 1;
         }
         return toRemoveFirst;
@@ -124,7 +124,7 @@ public class ArrayDeque<T> {
         if (isSpare()) {
             resize(size / 2);
         }
-        if (! isEmpty()) {
+        if (!isEmpty()) {
             size = size - 1;
         }
         return toRemoveLast;
@@ -134,11 +134,11 @@ public class ArrayDeque<T> {
      * If no such item exits,returns null.
      * Must not alter the deque. */
     public T get(int index) {
-        if (index >= size) {
+        if (index >= size || index < 0) {
             return null;
         }
         int indexStart = plusOne(nextFirst);
-        return items[indexStart + index % items.length];
+        return items[(indexStart + index) % items.length];
     }
 
     public ArrayDeque(ArrayDeque other) {
@@ -152,16 +152,16 @@ public class ArrayDeque<T> {
         }
     }
 
-    public static void main (String[] args) {
-        ArrayDeque L = new ArrayDeque();
-        L.addFirst("Team");
-        L.addFirst("Last");
-        L.addFirst("Missa");
-        L.size();
-        L.printDeque();
-        L.removeFirst();
-        L.printDeque();
-        L.removeLast();
-        L.printDeque();
-    }
+//    public static void main (String[] args) {
+//        ArrayDeque L = new ArrayDeque();
+//        L.addFirst("Team");
+//        L.addFirst("Last");
+//        L.addFirst("Missa");
+//        L.size();
+//        L.printDeque();
+//        L.removeFirst();
+//        L.printDeque();
+//        L.removeLast();
+//        L.printDeque();
+//    }
 }

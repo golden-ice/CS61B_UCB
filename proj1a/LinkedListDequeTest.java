@@ -85,7 +85,7 @@ public class LinkedListDequeTest {
 	}
 
 	/** Adds my self constructed test. */
-	public static void MyTest() {
+	public static void myTest() {
 
 		System.out.println("Running my test.");
 
@@ -114,6 +114,6 @@ public class LinkedListDequeTest {
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
-		MyTest();
+		myTest();
 	}
-} 
+}

@@ -1,5 +1,3 @@
-import java.util.Deque;
-
 public class LinkedListDeque<T> {
     private DequeNode sentinel;
     private int size;
@@ -98,7 +96,7 @@ public class LinkedListDeque<T> {
      * If no such item exits,returns null.
      * Must not alter the deque. */
     public T get(int index) {
-        if (index >= size) {
+        if (index >= size || index < 0) {
             return null;
         }
         DequeNode toGet = sentinel.next;
@@ -115,7 +113,7 @@ public class LinkedListDeque<T> {
         if (index >= size) {
             return null;
         }
-        if(index == 0) {
+        if (index == 0) {
             return thisNode.item;
         }
         return getRecursive(index - 1, thisNode.next);
